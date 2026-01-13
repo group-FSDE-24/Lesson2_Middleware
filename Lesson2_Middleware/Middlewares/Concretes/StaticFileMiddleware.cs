@@ -12,7 +12,7 @@ public class StaticFileMiddleware : IMiddleware
     {
         Console.WriteLine("Static File ise basladi....");
 
-        if (Path.HasExtension(httpListenerContext.Request.Url.AbsolutePath))
+        if (Path.HasExtension(httpListenerContext.Request.Url.AbsolutePath.Substring(1)))
         {
             string path = "C:\\Users\\karimzade_k\\source\\repos\\Lesson2_Middleware\\Lesson2_Middleware\\Views\\";
 
@@ -27,8 +27,8 @@ public class StaticFileMiddleware : IMiddleware
                     path = $"C:\\Users\\karimzade_k\\source\\repos\\Lesson2_Middleware\\Lesson2_Middleware\\wwwroot\\{fileName}";
 
                 var bytes = File.ReadAllBytes(path);
-                httpListenerContext.Response.OutputStream.Write(bytes);
                 httpListenerContext.Response.ContentType = GetContentType(path);
+                httpListenerContext.Response.OutputStream.Write(bytes);
             }
             catch (Exception ex)
             {
@@ -40,6 +40,8 @@ public class StaticFileMiddleware : IMiddleware
 
             }
         }
+
+
 
         Next?.Invoke(httpListenerContext);
     }

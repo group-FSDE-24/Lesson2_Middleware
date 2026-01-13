@@ -5,14 +5,12 @@ namespace Lesson2_Middleware.Middlewares.Concretes;
 
 public class MiddlewareBuilder
 {
-    public Stack<Type> middlewares = new ();
-
+    public Stack<Type> middlewares = new Stack<Type>();
 
     public void UseMiddleware<T>() where T: IMiddleware
     {
         middlewares.Push(typeof(T));
     }
-
 
     public HttpHandler Build()
     {

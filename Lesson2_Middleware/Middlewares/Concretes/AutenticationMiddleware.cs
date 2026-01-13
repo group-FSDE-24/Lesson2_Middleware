@@ -17,7 +17,7 @@ public class AutenticationMiddleware : IMiddleware
         var password = httpListenerContext.Request.QueryString["password"];
 
 
-        if(username=="Admin" && password == "123")
+        if(username=="admin" && password == "123")
         {
             Next?.Invoke(httpListenerContext);
 

@@ -9,8 +9,9 @@ public class WebHost
 {
     private int _port { get; set; }
     private HttpListener httpListener { get; set; }
-    private HttpHandler httpHandler { get; set; }
-    private MiddlewareBuilder middlewareBuilder { get; set; }
+    private HttpHandler httpHandler { get; set; } 
+    private MiddlewareBuilder middlewareBuilder { get; set; } = new MiddlewareBuilder();
+
 
     public WebHost(int port)
     {
